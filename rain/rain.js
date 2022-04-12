@@ -15,8 +15,7 @@ class RainWeather{
     let amount = this._options.amount || 100
     let rainArr = (this.rains = [])
     for(let i =0; i <amount; i++){
-      let p =this._yieldRain()
-      rainArr.push(p)
+      rainArr.push(this._yieldRain())
     }
   }
   _yieldRain(){ // 生成雨
