@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    html,body{
+      height: 100%;
+    }
+    #rain{
+      height: 100%;
+      width: 100%;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="rain" ></canvas>
+</body>
+</html>
+<script src="./rain.js"> </script>
+<script>
+  // 初始化
+  const canvas = document.querySelector('#rain');
+  const ctx = canvas.getContext('2d');
+  let width =  window.innerHeight;
+  let height =  window.innerHeight
+  canvas.width = width;
+  canvas.heihgt = height;
+  let rain;
+  window.onresize = (()=>{
+    width =  window.innerHeight;
+    height =  window.innerHeight
+    canvas.width = width;
+    canvas.heihgt = height;
+    rain && rain.resizeBg(width,height)
+  })
+  rain = new RainWeather(ctx,width,height,{amount:100,speed:2})
+  rain.run();
+</script>
